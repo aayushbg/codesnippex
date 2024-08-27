@@ -1,26 +1,48 @@
-import React, { useState } from 'react';
-import SnippetTile from '../components/SnippetTile';
-import SearchBar from '../components/SearchBar';
+import React, { useState, useEffect } from 'react';
+import SnippetList from '../components/SnippetList';
+import api from '../utils/api';
 
-const HomePage = ({ snippets, updatePopularity }) => {
+const HomePage = () => {
+  const [snippets, setSnippets] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSearch = (term) => {
-    setSearchTerm(term.toLowerCase());
+  useEffect(() => {
+    fetchSnippets();
+  }, []);
+
+  const fetchSnippets = async () => {
+    try {
+      const res = await api.get('/snippets');
+      setSnippets(res.data);
+    } catch (error) {
+      console.error('Error fetching snippets:', error);
+    }
   };
 
-  const filteredSnippets = snippets
-    .filter(snippet => snippet.title.toLowerCase().includes(searchTerm))
-    .sort((a, b) => b.popularity - a.popularity);
+  const handleVote = (updatedSnippet) => {
+    setSnippets(snippets.map(snippet => 
+      snippet._id === updatedSnippet._id ? updatedSnippet : snippet
+    ));
+  };
+
+  const filteredSnippets = snippets.filter(snippet =>
+    snippet.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
-    <div className="home-page">
-      <SearchBar onSearch={handleSearch} />
-      <div className="snippet-grid">
-        {filteredSnippets.map(snippet => (
-          <SnippetTile key={snippet.id} snippet={snippet} updatePopularity={updatePopularity} />
-        ))}
+    <div>
+      {/* <h1>Code Snippets</h1> */}
+      <div className='totalbar'>
+        <input
+          type="text"
+          placeholder="Search snippets..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="searchbar"
+        />
+        <button type="submit" className='searchbarbtn'>Search</button>
       </div>
+      <SnippetList snippets={filteredSnippets} onVote={handleVote} />
     </div>
   );
 };

@@ -1,61 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import SnippetForm from '../components/SnippetForm';
+import api from '../utils/api';
 
-const AddEditSnippetPage = ({ snippets, addSnippet, editSnippet }) => {
+const AddEditSnippetPage = () => {
+  const [snippet, setSnippet] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
-  const [snippet, setSnippet] = useState({ title: '', description: '', code: '' });
 
   useEffect(() => {
     if (id) {
-      const existingSnippet = snippets.find(s => s.id === parseInt(id));
-      if (existingSnippet) {
-        setSnippet(existingSnippet);
-      }
+      fetchSnippet();
     }
-  }, [id, snippets]);
+  }, [id]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (id) {
-      editSnippet(parseInt(id), snippet);
-    } else {
-      addSnippet(snippet);
+  const fetchSnippet = async () => {
+    try {
+      const res = await api.get(`/snippets/${id}`);
+      setSnippet(res.data);
+    } catch (error) {
+      console.error('Error fetching snippet:', error);
     }
-    navigate('/');
   };
 
-  const handleChange = (e) => {
-    setSnippet({ ...snippet, [e.target.name]: e.target.value });
+  const handleSubmit = async (data) => {
+    try {
+      if (id) {
+        await api.put(`/snippets/${id}`, data);
+      } else {
+        await api.post('/snippets', data);
+      }
+      navigate('/');
+    } catch (error) {
+      console.error('Error saving snippet:', error);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="snippet-form">
-      <h2>{id ? 'Edit Snippet' : 'Add Snippet'}</h2>
-      <input
-        type="text"
-        name="title"
-        placeholder="Title"
-        value={snippet.title}
-        onChange={handleChange}
-        required
-      />
-      <textarea
-        name="description"
-        placeholder="Description"
-        value={snippet.description}
-        onChange={handleChange}
-        required
-      ></textarea>
-      <textarea
-        name="code"
-        placeholder="Code"
-        value={snippet.code}
-        onChange={handleChange}
-        required
-      ></textarea>
-      <button type="submit">{id ? 'Update' : 'Add'} Snippet</button>
-    </form>
+    <div>
+      <h2>{id ? 'Edit' : 'Add'} Snippet</h2>
+      <SnippetForm onSubmit={handleSubmit} initialData={snippet} />
+    </div>
   );
 };
 

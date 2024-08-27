@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../context/AuthContext';
 
 const RegisterPage = () => {
   const [username, setUsername] = useState('');
@@ -15,12 +15,12 @@ const RegisterPage = () => {
       await register(username, email, password);
       navigate('/');
     } catch (error) {
-      console.error('Registration failed:', error);
+      console.error('Registration error:', error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="auth-form">
+    <form onSubmit={handleSubmit}>
       <h2>Register</h2>
       <input
         type="text"

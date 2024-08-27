@@ -1,236 +1,371 @@
+/* Global Styles */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-  }
-  
-  .app {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    margin-bottom: 30px;
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .add-snippet-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .search-bar {
-    display: flex;
-    margin-bottom: 20px;
-  }
-  
-  .search-bar input {
-    flex-grow: 1;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px 0 0 5px;
-  }
-  
-  .search-bar button {
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-  }
-  
-  .snippet-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-  }
-  
-  .snippet-tile {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-    color: #333;
-    transition: transform 0.2s;
-  }
-  
-  .snippet-tile:hover {
-    transform: translateY(-5px);
-  }
-  
-  .snippet-tile h3 {
-    margin-bottom: 10px;
-  }
-  
-  .snippet-tile .popularity {
-    display: block;
-    margin-top: 10px;
-    font-size: 14px;
-    color: #666;
-  }
-  
-  .snippet-details {
-    background-color: white;
-    padding: 30px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .snippet-details h2 {
-    margin-bottom: 20px;
-  }
-  
-  .snippet-details pre {
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 5px;
-    overflow-x: auto;
-    margin: 20px 0;
-  }
-  
-  .snippet-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-  }
-  
-  .edit-button, .delete-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  
-  .edit-button {
-    background-color: #2196F3;
-    color: white;
-  }
-  
-  .delete-button {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  .snippet-form {
-    background-color: white;
-    padding: 30px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .snippet-form h2 {
-    margin-bottom: 20px;
-  }
-  
-  .snippet-form input,
-  .snippet-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .snippet-form textarea {
-    min-height: 100px;
-  }
-  
-  .snippet-form button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  .snippet-tile {
-    position: relative;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-  }
-  
-  .snippet-tile:hover {
-    transform: translateY(-5px);
-  }
-  
-  .vote-buttons {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+  color: #343a40;
+  /* line-height: 1.6; */
+}
+
+/* .header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  padding: 20px 0;
+} */
+
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+/* a:hover {
+  color: #0056b3;
+} */
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* button:hover {
+  background-color: #0056b3;
+} */
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+  color: #343a40;
+}
+
+
+/* Header Styles */
+
+/* .header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  padding: 20px 0;
+} */
+
+header {
+  /* background-color: #343a40; */
+  padding: 20px 0;
+  margin-bottom: 30px;
+  /* padding-bottom: 25px; */
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header a {
+  color: black;
+  /* border: 1px solid red; */
+  font-weight: bold;
+}
+
+.logo {
+  /* color: yellow; */
+  color: #333;
+  font-size: 24px;
+}
+
+.btns{
+  background-color: #4caf50;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+header nav {
+  display: flex;
+  gap: 15px;
+}
+
+header button {
+  background-color: #dc3545;
+}
+
+header button:hover {
+  background-color: #c82333;
+}
+
+.totalbar{
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.searchbar{
+  margin: 0;
+  /* border: 1px solid red; */
+  border-radius: 5px 0 0 5px;
+  flex-grow: 1;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.searchbarbtn{
+  background-color: #333;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+/* Home Page and Snippet List */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.snippet-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* .snippet-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: calc(33.333% - 20px);
+  box-sizing: border-box;
+} */
+
+.snippet-item {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #0000001a;
+  padding: 20px;
+  width: 216px;
+  height: 240px;
+  position: relative;
+  transition: transform .2s;
+}
+
+.snippet-item:hover{
+  transform: translateY(-5px);
+}
+
+.snippet-item h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.snippet-item p {
+  margin-bottom: 10px;
+  color: #6c757d;
+}
+
+.snippet-item .popularity {
+  font-weight: bold;
+}
+
+/* .snippet-item .vote-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.snippet-item button {
+  flex: 1;
+  padding: 10px;
+  font-size: 1rem;
+} */
+
+.snippet-item a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+}
+
+.snippet-item a:hover {
+  color: #0056b3;
+}
+
+.vote-buttons {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  row-gap: 0px;
+  right: 10px;
+  top: 10px;
+}
+
+.vote-buttons button{
+  padding: 0;
+  margin: 0;
+}
+
+.vote-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.upvote {
+  color: #4caf50;
+}
+
+.downvote {
+  color: #f44336;
+}
+
+.vwsnpt {
+  /* color: red; */
+  position: absolute;
+  bottom: 10px;
+}
+
+
+/* Form Styles */
+form {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form textarea {
+  resize: none;
+}
+
+form input, form textarea {
+  margin-bottom: 20px;
+}
+
+form button {
+  width: 100%;
+  font-size: 1rem;
+  padding: 12px;
+}
+
+form .error {
+  color: #dc3545;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+/* Snippet Details Page */
+.snipouter {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #0000001a;
+  padding: 30px;
+}
+
+.snipouter h2 {
+  margin-bottom: 20px;
+  font-size: 1.75rem;
+}
+
+.snipouter pre {
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  margin: 20px 0;
+  overflow-x: auto;
+  padding: 20px;
+}
+
+.snipouter p {
+  margin-bottom: 10px;
+}
+
+.snippet-details .actions {
+  margin-top: 20px;
+}
+
+h5{
+  /* border: 1px solid red; */
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.snipchanger a, 
+.snipchanger button {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.snipchanger button {
+  background-color: #dc3545;
+}
+
+.snippet-details .actions button:hover {
+  background-color: #c82333;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .snippet-list {
     flex-direction: column;
   }
-  
-  .vote-button {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    line-height: 1;
+
+  .snippet-item {
+    width: 100%;
   }
-  
-  .vote-button:focus {
-    outline: none;
+
+  header nav {
+    flex-direction: column;
+    gap: 10px;
   }
-  
-  .upvote {
-    color: #4CAF50;
-  }
-  
-  .downvote {
-    color: #f44336;
-  }
-  
-  .snippet-content {
-    text-decoration: none;
-    color: #333;
-    display: block;
-  }
-  
-  .snippet-content h3 {
-    margin-bottom: 10px;
-    padding-right: 40px; /* Make room for vote buttons */
-  }
-  
-  .snippet-content .popularity {
-    display: block;
-    margin-top: 10px;
-    font-size: 14px;
-    color: #666;
-  }
+}

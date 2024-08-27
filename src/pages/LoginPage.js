@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../context/AuthContext';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -14,12 +14,12 @@ const LoginPage = () => {
       await login(email, password);
       navigate('/');
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error('Login error:', error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="auth-form">
+    <form onSubmit={handleSubmit}>
       <h2>Login</h2>
       <input
         type="email"

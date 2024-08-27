@@ -15,7 +15,7 @@ const SnippetTile = ({ snippet, updatePopularity }) => {
       </div>
       <Link to={`/snippet/${snippet.id}`} className="snippet-content">
         <h3>{snippet.title}</h3>
-        <p>{snippet.description.substring(0, 50)}...</p>
+        <p>{snippet.description.substring(0, 25)}...</p>
         <span className="popularity">Popularity: {snippet.popularity}</span>
       </Link>
     </div>

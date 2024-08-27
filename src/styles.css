@@ -324,15 +324,6 @@ form .error {
   margin-top: 20px;
 }
 
-h5{
-  /* border: 1px solid red; */
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-}
-
 .snipchanger a, 
 .snipchanger button {
   display: inline-block;

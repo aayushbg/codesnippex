@@ -22,7 +22,6 @@ function App() {
             <Route path="/add" element={<AddEditSnippetPage />} />
             <Route path="/edit/:id" element={<AddEditSnippetPage />} />
           </Routes>
-          <h5 className='coder'>Made with ❤️ by <a href="https://www.linkedin.com/in/aayush-gondaliya/">Aayush</a></h5>
         </div>
       </Router>
     </AuthProvider>

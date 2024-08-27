@@ -15,7 +15,7 @@ const SnippetItem = ({ snippet, onVote }) => {
   return (
     <div className="snippet-item">
       <h3>{snippet.title}</h3>
-      <p>{snippet.description}</p>
+      <p>{snippet.description.substring(0, 25)}...</p>
       <p>Language: {snippet.language}</p>
       <p>Popularity: {snippet.popularity}</p>
       <div className= "vote-buttons">

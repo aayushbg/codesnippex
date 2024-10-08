@@ -78,3 +78,9 @@ snippex/
 │   ├── styles.css               # Global styles
     └── utils/
         └── api.js               # Utility functions for interacting with backend APIs
+```
+## Project Snapshots
+
+![snip1](snip1.png)
+![snip2](snip2.png)
+![snip3](snip3.png)
